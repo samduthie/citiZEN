@@ -17,9 +17,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-<<<<<<< HEAD
 
-=======
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         final Intent intent = new Intent(MainActivity.this, MessagesMainActivity.class);
@@ -31,23 +31,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
->>>>>>> 30a2bbfad10119ea86ad44b0e0ce51ee6890b678
+       }
+
+
+            public void gotoregister(View view) {
+
+                Intent intent = new Intent(MainActivity.this, Register.class);
+                startActivity(intent);
+
             }
+        }
 
-    public void gotoregister(View view){
 
-        Intent intent = new Intent(this, Register.class);
-        startActivity(intent);
 
-    }
 
-}
-
-    
 

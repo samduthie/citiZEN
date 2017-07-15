@@ -2,6 +2,7 @@ package com.example.bills.angel_hack;
 
 import android.os.AsyncTask;
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.BufferedWriter;
@@ -26,46 +27,53 @@ public class BackgroundTask extends AsyncTask<String, Void, String> {
 
     }
     protected String doInBackground(String... params) {
-        String reg_url="http://62.190.88.242/project/register.php";
+        String reg_url="http://www.psychtree.co.uk/register.php";
         String method=params[0];
         if (method.equals("register")){
 
             String username=params[1];
-            String password=params[1];
-            String email=params[1];
-            String location=params[1];
+            String password=params[2];
+            String email=params[3];
+            String location=params[4];
 
             try {
                 URL url = new URL(reg_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-                httpURLConnection.setRequestMethod("Post");
+                httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
                 OutputStream os = httpURLConnection.getOutputStream();
 
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-                String data = URLEncoder.encode("username", "UTF-8")+"s"+ URLEncoder.encode(username, "UTF-8")+"&"+
-                        URLEncoder.encode("password", "UTF-8")+"s"+ URLEncoder.encode(password, "UTF-8")+"&"+
-                        URLEncoder.encode("email", "UTF-8")+"s"+ URLEncoder.encode(email, "UTF-8")+"&"+
-                        URLEncoder.encode("location", "UTF-8")+"s"+ URLEncoder.encode(location, "UTF-8");
+                String data = URLEncoder.encode("username", "UTF-8")+"="+ URLEncoder.encode(username, "UTF-8")+"&"+
+                        URLEncoder.encode("password", "UTF-8")+"="+ URLEncoder.encode(password, "UTF-8")+"&"+
+                        URLEncoder.encode("email", "UTF-8")+"="+ URLEncoder.encode(email, "UTF-8")+"&"+
+                        URLEncoder.encode("location", "UTF-8")+"="+ URLEncoder.encode(location, "UTF-8");
                 bufferedWriter.write(data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
+
                 os.close();
                 InputStream IS = httpURLConnection.getInputStream();
                 IS.close();
-                return "Registration Success";
+                return data.toString();
 
 
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
+
             } catch (IOException e) {
                 e.printStackTrace();
+
+            } catch(Exception e) {
+                Log.d(e.toString(), "debug1");
+                return (e.toString());
             }
+
 
         }
 
-        return null;
+        return "Registration Failed!";
     }
 
     @Override

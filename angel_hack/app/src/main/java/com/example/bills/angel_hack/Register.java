@@ -17,8 +17,9 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         e_username = (EditText) findViewById(R.id.username);
         e_password = (EditText) findViewById(R.id.password);
-        e_email = (EditText) findViewById(R.id.email);
+
         e_location = (EditText) findViewById(R.id.location);
+        e_email = (EditText) findViewById(R.id.email);
 
     }
 
