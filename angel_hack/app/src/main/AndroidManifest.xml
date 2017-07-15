@@ -19,7 +19,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".Register"></activity>
+=======
+        <activity
+            android:name=".MessagesHomeActivity"
+            android:label="@string/title_activity_messages_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MessagesMainActivity"
+            android:label="MessagesMainActivity">
+
+        </activity>
+>>>>>>> 30a2bbfad10119ea86ad44b0e0ce51ee6890b678
     </application>
 
 </manifest>
